@@ -3,32 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="icon" type="favicom" href="./recursos_moviestack/Moviestack_favicon.png">
     <link rel="stylesheet" href="style.css">   
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Moviestack</title>
 </head>
 <body>
     <header>
-        <img class="w-16 h-16 object-cover" src="./Recursos Moviestack/Moviestack_logotipo1.png" alt="Logo Moviestack">
-        <h2 class="">Moviestack</h2>
-        <nav>
-            <a href="#">Home</a>
-            <a href="./movies.html">Movies</a>
-            <a href="#">Favs</a>
+        <div>
+            <img class="w-16 h-16 object-cover inline" href="./index.html" src="./recursos_moviestack/Moviestack_isotipo.png" alt="Logo">
+            <img class="w-16 h-16 object-cover inline" src="./recursos_moviestack/Moviestack_logotipo1.png" alt="Logo Moviestack">
+        </div>
+        <h2>Moviestack</h2>
+        <nav class="text-white">
+            <a class="bg-cyan-300 text-black" href="#">Home</a>
+            <a class="hover:bg-cyan-100 hover:text-black" href="./movies.html">Movies</a>
+            <a class="hover:bg-cyan-100 hover:text-black" href="#">Favs</a>
         </nav>
     </header>
     <main>
-        <div>
-            <img class="w-full  object-fit" src="./Recursos Moviestack/Composición de la marca.png" alt="banner">
+        <div class="w-full text-center">
+            <img class="h-[74vh] w-full object-cover" src="./recursos_moviestack/ban2.jpg" alt="banner">
             <h1 id="titulo">Datos</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae cupiditate commodi sunt! Distinctio, modi magni. Tenetur, eveniet cumque, suscipit deserunt aliquid quo repellendus reprehenderit consectetur impedit animi cum doloremque! Dicta!
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto ex expedita voluptate, mollitia iure, itaque exercitationem molestiae minus distinctio repellat, nesciunt quaerat dignissimos quisquam! Magni, reiciendis. Modi qui nam obcaecati?
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab reiciendis ex voluptatibus veritatis unde sit deserunt, voluptas atque consectetur mollitia? Placeat aspernatur nihil aut nesciunt voluptates ex eaque fugit optio? Lorem ipsum dolor sit amet consectetur adipisicing elit. At totam excepturi, possimus doloremque similique quasi quisquam earum velit, dolorum quod neque? Maxime, similique atque aut ut vitae enim aliquid laborum.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, vitae illum adipisci fugiat repudiandae eveniet distinctio quos sapiente maxime ipsam! Excepturi qui dolorem deserunt autem totam cumque accusantium repellat nesciunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, debitis illum iusto dolores repellendus quidem aperiam esse nostrum mollitia rerum eaque modi ipsam reprehenderit, veniam atque ullam expedita minima nesciunt!
-                </p>
+                <p>Venta de películas y reseñas de las mismas, en Blu-ray y DVD. Cine para coleccionar 100% original.</p>
+        </div>
+        <div class="flex flex-col space-y-4 p-2">
+                <article class="flex flex-col gap-[70px] bg-[url('./recursos_moviestack/MOVIES.jpg')] bg-cover h-[30vh] w-[30vw] justify-center items-center ">
+                    <h3 class="p-2 bg-cyan-950 font-bold text-white rounded">Movies</h3>
+                    <a class="hover:scale-105 p-2  bg-cyan-950 text-white" href="./movies.html">See our movies</a>
+                </article>
+                <article class="flex flex-col gap-[70px] bg-[url('./recursos_moviestack/FAVS.jpg')] bg-cover h-[30vh] w-[30vw] justify-center items-center rounded">
+                    <h3 class="p-2 bg-cyan-950 font-bold text-white rounded">Favs</h3>
+                    <a class="hover:scale-105 p-2 bg-cyan-950 text-white" href="#">Favorites</a>
+                </article>
         </div>
     </main>
     <footer>
+        <h3 class="text-white">MindHub - Cohort 50</h3>
     </footer>
     <script src="./data.js"></script>
     <script src="./index.js"></script>
