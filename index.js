@@ -23,71 +23,73 @@ function printcard( listmovie, elemento ){
     for (const movi of listmovie){
         template += createCard (movi)
     }
+    if (listmovie.length == 0 ){
+        template = `<h2 class="font-bold text-white text-3xl>Theres no movies like that</h2>`
+    }
     elemento.innerHTML = template
 } 
 
 printcard(movies, div )
+//----------------------------------------------------
 
-const select = document.getElementById("selge")
+const selge = document.getElementById("selge")
+
+const tags = movies.map(movie => movie.genres).flat()
+
+const setTags = new Set (tags)
+
+const arrayTags = Array.from(setTags)
+
+function createCheckbox(tag){
+    return `<label>${tag}
+                <input type="checkbox" name="tag" value "${tag}">
+            </label>`
+}
+const fnReduce = (template, tag ) => template + createCheckbox (tag)
+
+selge.innerHTML = arrayTags.reduce (fnReduce, "")
+//------------------------
+
+
+
 const search = document.getElementById("searcher")
 
+input.addEventListener('input', () => {
+    // printcard(movies,div)
+    const filtermoviesbyname = filtermoviesbyname( movies , input.value)
+    printcard(filtermoviesbyname, div)
+})
 
-
-input.addEventListener("input", () => {
-    const moviesbyname = filtermoviesbyname(
-      movies,
-      input.value
-    );
-function moviesbyname(listmovie, name) {
-    return listmovie.filter(movie => movie.name.toLowerCase().startsWith(name.toLowerCase()))
-    }
-    const valuesChecked = verifiqueChecked();
-    const moviesbytag = filtermoviesbytag(
-      moviesbyname,
-      valuesChecked
-    );
-    printcard(moviesbytag, main);
-  });
-function filtermoviesbytag(listmovie, selected) {
-    if( selected.length == 0 ) {
-        return listmovie
-    }else{
-        return listmovie.filter(movie => selected.some(selected => movie.tags.includes(selected)))
-    }
+function filtermoviesbyname (listmovie , title){
+    return listmovie.filter(movies => movies.title.toLowerCase().startsWith (title.toLowerCase ()))
 }
-    elemento.addEventListener("input", () => {
-    const moviesbyname = filtermoviesbyname(
-      movies,
-      input.value
-    );
-    const valuesChecked = verifiquedChecked();
-    const moviesbytag= filtermoviesbytag(
-      moviesbyname,
-      valuesChecked
-    );
-    function createCheckbox(tag) {
-        return `<label>${tag}
-                    <input type="checkbox" name="tag" value="${tag}">
-                </label>`
-    }
-    const fnReduce = (template, tag) => template + crearCheckbox(tag);
 
-    function getTags( movies ){
-        const tags = movies.map((movie) => movie.tags).flat();
-        const setTags = new Set(tags);
-        return Array.from(setTags);
+selge.addEventListener('input',() =>{
+    const valuesChecked = verifiChecked()
+    const filtermoviesbytag = filtermoviesbytag(filtermoviesbyname, valuesChecked)
+    printcard(filtermoviesbytag, div)
+})
 
-    function verifiquedChecked() {
+function filtermoviesbyname ( listmovie, title) {
+    return listmovie,filter(movies => movies.name.toLowerCase().startsWith(title.toLowerCase()))
+}
 
-        const checkboxes = document.querySelectorAll('[type="checkbox"]')
-        const values = []
-        for (const checkbox of checkboxes) {
-            if (checkbox.checked) {
-                values.push(checkbox.value)
-            }
+function filtermoviesbytag(listmovie, selected){
+    return listmovie.filter (movies=> selected.some(selected => movies.tags.includes(selected)))
+}
+
+function verifiChecked(){
+    const checkboxes = document.querySelectorAll('[type="checkbox"]')
+    const values = []
+    for (const checkbox of checkboxes){
+        if (checkbox.checked){
+            values.push(checkbox.value)
         }
-        return values
+    }
+    return values
+}
 
-    printcard(moviesbyname, main);
-  });
-  
+
+
+
+
