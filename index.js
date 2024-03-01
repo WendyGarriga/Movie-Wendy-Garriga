@@ -18,6 +18,18 @@ function createCard(movies){
     `;
 }
 
+function searchKeymovi(listmovie, titleSearch){
+    for (const movi of listmovie){
+        if(movi.title == titleSearch){
+            return movi.key
+        }
+    }
+    return null
+}
+
+const aux =searchKeymovi(movies , " Openhaimer ")
+console.log(document.querySelector(`#${aux}`))
+
 function printcard( listmovie, elemento ){
     let template = ""
     for (const movi of listmovie){
@@ -29,33 +41,37 @@ function printcard( listmovie, elemento ){
     elemento.innerHTML = template
 } 
 
+
 printcard(movies, div )
-//----------------------------------------------------
+
+
 
 const selge = document.getElementById("selge")
 
-const tags = movies.map(movie => movie.genres).flat()
+const genres = movies.map(movie => movie.genres).flat()
 
-const setTags = new Set (tags)
+const setGenres = new Set (genres)
 
-const arrayTags = Array.from(setTags)
+const arrayGenres = Array.from(setGenres)
 
-function createCheckbox(tag){
-    return `<label>${tag}
-                <input type="checkbox" name="tag" value "${tag}">
+function createCheckbox(genres){
+   return `<label>${genres}
+                <input type="checkbox" name="genre" value "${genres}">
             </label>`
 }
-const fnReduce = (template, tag ) => template + createCheckbox (tag)
+const fnReduce = (template, genre ) => template + createCheckbox (genre)
 
-selge.innerHTML = arrayTags.reduce (fnReduce, "")
-//------------------------
-
+selge.innerHTML = arrayGenres.reduce (fnReduce, "")
 
 
-const search = document.getElementById("searcher")
+
+
+
+const input = document.getElementById("searcher")
 
 input.addEventListener('input', () => {
-    // printcard(movies,div)
+   // printcard(movies,div)
+    console.log('input Busqueda:', input.value)
     const filtermoviesbyname = filtermoviesbyname( movies , input.value)
     printcard(filtermoviesbyname, div)
 })
@@ -64,19 +80,24 @@ function filtermoviesbyname (listmovie , title){
     return listmovie.filter(movies => movies.title.toLowerCase().startsWith (title.toLowerCase ()))
 }
 
+ // console.log(filtermoviesbyname(movies))
+
 selge.addEventListener('input',() =>{
     const valuesChecked = verifiChecked()
     const filtermoviesbytag = filtermoviesbytag(filtermoviesbyname, valuesChecked)
     printcard(filtermoviesbytag, div)
 })
 
-function filtermoviesbyname ( listmovie, title) {
-    return listmovie,filter(movies => movies.name.toLowerCase().startsWith(title.toLowerCase()))
-}
-
 function filtermoviesbytag(listmovie, selected){
     return listmovie.filter (movies=> selected.some(selected => movies.tags.includes(selected)))
 }
+
+function filtermoviesbyname ( listmovie, title) {
+    return listmovie,filter(movies => movies.name.toLowerCase().startsWith(title.toLowerCase()))
+}
+console.log(filtermoviesbyname(movies, "open"))
+
+console.log(filtermoviesbyname(movies))
 
 function verifiChecked(){
     const checkboxes = document.querySelectorAll('[type="checkbox"]')
