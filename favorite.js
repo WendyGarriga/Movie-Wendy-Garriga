@@ -1,6 +1,7 @@
-import{createCard, printcard, selopt, filtermoviesbyname, filtermoviesbytag, buttonf} from "./functions.js"
+import { createCard,printcard,buttonf } from "./functions.js"
 
-let tituloPrincipal = "Movies"
+
+let tituloPrincipal = "Favorites!"
 
 const h1 = document.getElementById("titulo")
 
@@ -25,44 +26,20 @@ fetch (url, init)
         const movies = data;
         console.log(movies); 
         const moviesArray = Object.values(data.movies) ;
-        selopt(moviesArray,selge)
         printcard(moviesArray, div, createCard);
+        const moviesfavo = moviesArray.filter(movies => favorites.includes(movies.id))
         buttonf(favorites)
+        let template= ""
+        if (moviesfavo.length ==0){
+            template += "<h2 class=font-bold text-white text-3xl>You don't have favorites :'( </h2>"
+        }
 
 })
 .catch(err=>console.log(err))
 
 
-
-
 let favorites = JSON.parse(localStorage.getItem('favorites')) || []
 let contenedor = document.getElementById('contenedor')
-
-
-selge.addEventListener("selge", () =>{
-    const filtermoviesbyn = filtermoviesbyname (movies, searcher.value)
-    const filtermoviesbyt = filtermoviesbytag (filtermoviesbyn, selge.value)
-    if (selge.value ==="all"){
-        printcard (filtermoviesbyn,div,createCard)
-    }else{
-        printcard(filtermoviesbyt, div,createCard)
-    }
-    buttonf(favorites)
-})
-
-searcher.addEventListener(` input`,()=>{
-    const filtermoviesbyn = filtermoviesbyname (movies,searcher.value)
-    const filtermoviesbyt = filtermoviesbytag (filtermoviesbyn, selge.value)
-    if (selge.value === "all"){
-        printcard(filtermoviesbyn, div, createCard)
-    }else{
-        printcard(filtermoviesbyt, div, createCard)
-
-
-    }
-    buttonf(favorites)
-    }
-)
 
 contenedor.addEventListener('click' , (e) =>{
     const movievent = e.target
@@ -77,5 +54,8 @@ contenedor.addEventListener('click' , (e) =>{
         }
     }
     localStorage.setItem("favorites",JSON.stringify(favorites))
+    const movFav =movies.filter(movies => favorites.includes(movies.id))
+    printcard(movFav,div,createCard)
+
     buttonf(favorites)
 })
