@@ -53,3 +53,17 @@ main {
     background: linear-gradient(90deg, rgba(9,9,121,1) 35%, rgba(2,0,36,1) 56%, rgba(0,212,255,1) 100%);
 
 }
+
+/* article div button{
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+
+    background-color: rgb(234, 239, 90);
+
+    position: absolute;
+    right: 10px;
+    top: 10px;
+} */

@@ -18,15 +18,15 @@
         <nav class="text-white">
             <a class="hover:bg-cyan-100 hover:text-black" href="./index.html">Home</a>
             <a class="bg-cyan-300 text-black" href="#">Movies</a>
-            <a class="hover:bg-cyan-100 hover:text-black" href="#">Favs</a>
+            <a class="hover:bg-cyan-100 hover:text-black" href="./favorite.html">Favs</a>
         </nav>
     </header>   
     <main>
         <main class="main">
-            <h1 id="titulo">Datos</h1>          <!--contenedorChecks-->
-            <div class="flex flex-wrap gap-5 justify-center" id="selge">
-            <!-- <select id="selge" class="text-black" name="Genre">
-                <option selected disabled class="text-black">Select Genre </option>
+            <h1 id="titulo">Datos</h1>          
+            <div class="flex flex-wrap gap-5  w-full justify-center text-black" id="selged">
+                <select id="selge" class="text-black" name="Genre">
+            <!--<option selected disabled class="text-black">Select Genre </option>
                 <option class="text-black">Horror</option>
                 <option class="text-black">Mystery</option>
                 <option class="text-black">Thriller</option>
@@ -41,10 +41,10 @@
                 <option class="text-black">Family</option>
                 <option class="text-black">Science Fiction</option>
                 <option class="text-black">History</option>
-            </select> -->
+            </select> --> 
             </div>
             <div class="w-3/4 flex justify-center relative">
-                <input id="searcher" class="w-1/4 h-9 rounded text-black" placeholder="Opennhaimer"  type="text">
+                <input id="searcher" class="w-64 h-9 rounded text-black justify-center" placeholder="Opennhaimer"  type="search">
                 <!-- <img class="h-6 absolute top-1 justify-items-end" src="./recursos_moviestack/Iconolupa.png" > -->
             </div>
             <div id="contenedor" class="grow p-3 flex flex-wrap gap-4 justify-center ">
@@ -54,7 +54,11 @@
     <footer>
         <h3 class="text-white">MindHub - Cohort 50</h3>
     </footer>
-    <script src="./data.js"></script>
-    <script src="./index.js"></script>
+    <!-- <script src="./data.js"></script> -->
+    <script type="module" src="./functions.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script src="./info.js"></script>
+    <script type="module" src="./favorite.js"></script>
+
 </body>
 </html>
